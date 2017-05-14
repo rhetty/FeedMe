@@ -17,6 +17,11 @@
 		C59951D61EC34E8500747C81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59951D41EC34E8500747C81 /* LaunchScreen.storyboard */; };
 		C59951E11EC34E8500747C81 /* FeedMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951E01EC34E8500747C81 /* FeedMeTests.swift */; };
 		C59951EC1EC34E8500747C81 /* FeedMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951EB1EC34E8500747C81 /* FeedMeUITests.swift */; };
+		C59951FC1EC353F200747C81 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951FB1EC353F200747C81 /* Subscription.swift */; };
+		C59952011EC445C700747C81 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59952001EC445C600747C81 /* FeedsViewController.swift */; };
+		C59952031EC445E000747C81 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59952021EC445E000747C81 /* BaseViewController.swift */; };
+		C599520A1EC8AECE00747C81 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59952091EC8AECE00747C81 /* BaseTableViewController.swift */; };
+		C599520C1EC8AF1D00747C81 /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C599520B1EC8AF1D00747C81 /* ArrayDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,12 @@
 		C59951E71EC34E8500747C81 /* FeedMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59951EB1EC34E8500747C81 /* FeedMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMeUITests.swift; sourceTree = "<group>"; };
 		C59951ED1EC34E8500747C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C59951FB1EC353F200747C81 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Model/Subscription.swift; sourceTree = "<group>"; };
+		C59952001EC445C600747C81 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedsViewController.swift; path = Controller/FeedsViewController.swift; sourceTree = "<group>"; };
+		C59952021EC445E000747C81 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controller/BaseViewController.swift; sourceTree = "<group>"; };
+		C59952051EC7010300747C81 /* FeedMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedMe-Bridging-Header.h"; sourceTree = "<group>"; };
+		C59952091EC8AECE00747C81 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Controller/BaseTableViewController.swift; sourceTree = "<group>"; };
+		C599520B1EC8AF1D00747C81 /* ArrayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayDataSource.swift; path = Base/ArrayDataSource.swift; sourceTree = "<group>"; };
 		C7D179537D100D56C184F358 /* Pods-FeedMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedMeTests/Pods-FeedMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF947508BB01291735A8761 /* Pods_FeedMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD924CC28A4B78C4E547191 /* Pods-FeedMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedMe/Pods-FeedMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +135,8 @@
 		C59951C71EC34E8500747C81 /* FeedMe */ = {
 			isa = PBXGroup;
 			children = (
+				C59951FD1EC4455600747C81 /* Controller */,
+				C59951FA1EC353A700747C81 /* Model */,
 				C59951F91EC3503B00747C81 /* Base */,
 				C59951C81EC34E8500747C81 /* AppDelegate.swift */,
 				C59951CC1EC34E8500747C81 /* Main.storyboard */,
@@ -131,6 +144,7 @@
 				C59951D41EC34E8500747C81 /* LaunchScreen.storyboard */,
 				C59951D71EC34E8500747C81 /* Info.plist */,
 				C59951CF1EC34E8500747C81 /* FeedMe.xcdatamodeld */,
+				C59952051EC7010300747C81 /* FeedMe-Bridging-Header.h */,
 			);
 			path = FeedMe;
 			sourceTree = "<group>";
@@ -156,8 +170,27 @@
 		C59951F91EC3503B00747C81 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C599520B1EC8AF1D00747C81 /* ArrayDataSource.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		C59951FA1EC353A700747C81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C59951FB1EC353F200747C81 /* Subscription.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C59951FD1EC4455600747C81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C59952001EC445C600747C81 /* FeedsViewController.swift */,
+				C59952021EC445E000747C81 /* BaseViewController.swift */,
+				C59952091EC8AECE00747C81 /* BaseTableViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		F1F8F82506172ACBD2FAD187 /* Pods */ = {
@@ -251,6 +284,7 @@
 					C59951C41EC34E8500747C81 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = JXJ9ZF6R76;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					C59951DB1EC34E8500747C81 = {
@@ -457,6 +491,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C599520A1EC8AECE00747C81 /* BaseTableViewController.swift in Sources */,
+				C59952031EC445E000747C81 /* BaseViewController.swift in Sources */,
+				C59951FC1EC353F200747C81 /* Subscription.swift in Sources */,
+				C59952011EC445C700747C81 /* FeedsViewController.swift in Sources */,
+				C599520C1EC8AF1D00747C81 /* ArrayDataSource.swift in Sources */,
 				C59951C91EC34E8500747C81 /* AppDelegate.swift in Sources */,
 				C59951D11EC34E8500747C81 /* FeedMe.xcdatamodeld in Sources */,
 			);
@@ -611,11 +650,15 @@
 			baseConfigurationReference = EBD924CC28A4B78C4E547191 /* Pods-FeedMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JXJ9ZF6R76;
 				INFOPLIST_FILE = FeedMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rhett.FeedMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FeedMe/FeedMe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -625,11 +668,14 @@
 			baseConfigurationReference = 1C2E8D0800059E272DF64E6E /* Pods-FeedMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JXJ9ZF6R76;
 				INFOPLIST_FILE = FeedMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rhett.FeedMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FeedMe/FeedMe-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -715,6 +761,7 @@
 				C59951F21EC34E8500747C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C59951F31EC34E8500747C81 /* Build configuration list for PBXNativeTarget "FeedMeTests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +770,7 @@
 				C59951F51EC34E8500747C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C59951F61EC34E8500747C81 /* Build configuration list for PBXNativeTarget "FeedMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -731,6 +779,7 @@
 				C59951F81EC34E8500747C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

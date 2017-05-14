@@ -8,6 +8,7 @@ target 'FeedMe' do
   # Pods for FeedMe
 
   pod 'Alamofire', '~> 4.4.0'
+  pod 'MWFeedParser', '~> 1.0.1'
 
   target 'FeedMeTests' do
     inherit! :search_paths
