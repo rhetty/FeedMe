@@ -12,25 +12,26 @@ import MWFeedParser
 class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
   private var dataSource: ArrayDataSource! = nil
   private var feedItems: [MWFeedItem] = []
+  private var parser: MWFeedParser?
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // configure tableview
     self.dataSource = ArrayDataSource(cellIdentifier: "FeedCell", configureCell: { (cell, item) in
       cell.textLabel?.text = (item as! MWFeedItem).title
     })
     self.tableView.dataSource = self.dataSource
     self.tableView.delegate = self
     
+    // configure parser
     let rssURL = URL(string: "https://www.zhihu.com/rss")
-    let parser = MWFeedParser(feedURL: rssURL)
+    parser = MWFeedParser(feedURL: rssURL)
     parser?.delegate = self
 //    parser?.feedParseType = ParseTypeFull
-//    parser?.connectionType = ConnectionTypeAsynchronously
-    
-    parser?.parse()
+    parser?.connectionType = ConnectionTypeAsynchronously
     
   }
   
@@ -39,6 +40,9 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
     // Dispose of any resources that can be recreated.
   }
   
+  @IBAction func refresh(_ sender: UIRefreshControl) {
+    parser?.parse()
+  }
   
   /*
    // MARK: - Navigation
@@ -69,6 +73,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
   func feedParserDidFinish(_ parser: MWFeedParser!) {
     self.dataSource.items = self.feedItems
     self.tableView.reloadData()
+    self.refreshControl?.endRefreshing()
   }
   
   func feedParser(_ parser: MWFeedParser!, didFailWithError error: Error!) {
