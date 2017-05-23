@@ -10,22 +10,44 @@ import UIKit
 import MWFeedParser
 
 class FeedContentVC: BaseViewController {
-  @IBOutlet weak var contentWebView: UIWebView!
-  
   var feedItem: MWFeedItem!
+  var vcDict: Dictionary<Int, UIViewController> = Dictionary()
+  var currentController: UIViewController!
+  
+  static let controllerIdentifiers = ["FeedSummaryVC", "FeedWebsiteVC"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      if let urlStr = self.feedItem.identifier {
-        self.contentWebView.loadRequest(URLRequest(url: URL(string: urlStr)!))
-      }
+      self.currentController = self.controller(atIndex: 0)
+      self.view.addSubview(self.currentController.view)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  func controller(atIndex index: Int) -> UIViewController {
+    var controller = self.vcDict[index]
+    if controller == nil {
+      controller = self.storyboard!.instantiateViewController(withIdentifier: FeedContentVC.controllerIdentifiers[index])
+      controller?.setValue(self.feedItem, forKey: "feedItem")
+      self.vcDict[index] = controller
+      self.addChildViewController(controller!)
+    }
+    
+    return controller!
+  }
+  
+  func transition(toIndex index: Int) {
+    let dest = self.controller(atIndex: index)
+    self.transition(from: self.currentController, to: dest, duration: 1, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil) { (finished) in
+        if finished {
+          self.currentController = dest
+        }
+    }
+  }
     
 
     /*
@@ -38,4 +60,8 @@ class FeedContentVC: BaseViewController {
     }
     */
 
+  @IBAction func browseTypeChanged(_ sender: UISegmentedControl) {
+    self.transition(toIndex: sender.selectedSegmentIndex)
+  }
+  
 }

@@ -41,7 +41,7 @@
                         </connections>
                     </refreshControl>
                     <connections>
-                        <segue destination="UDi-wx-Dc4" kind="show" identifier="ShowContent" id="KYq-Rw-j5w"/>
+                        <segue destination="Mgu-45-C6C" kind="show" identifier="ShowContent" id="OYg-ti-XsE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y11-zk-m02" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,9 +49,59 @@
             <point key="canvasLocation" x="1064.8" y="-79.610194902548727"/>
         </scene>
         <!--Feed ContentVC-->
+        <scene sceneID="u9T-3e-Z6S">
+            <objects>
+                <viewController id="Mgu-45-C6C" customClass="FeedContentVC" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AH9-PH-yvn"/>
+                        <viewControllerLayoutGuide type="bottom" id="zvJ-Zl-bGV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xd8-WP-CWg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EfV-3p-LB8">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MSS-UW-yfJ">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Summary"/>
+                                <segment title="Website"/>
+                            </segments>
+                            <connections>
+                                <action selector="browseTypeChanged:" destination="Mgu-45-C6C" eventType="valueChanged" id="b0P-iu-Q4c"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yzc-Rl-lKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="-80"/>
+        </scene>
+        <!--Feed SummaryVC-->
+        <scene sceneID="onT-iT-9g5">
+            <objects>
+                <viewController storyboardIdentifier="FeedSummaryVC" id="ohN-Vx-TXc" customClass="FeedSummaryVC" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eE2-0a-J0l"/>
+                        <viewControllerLayoutGuide type="bottom" id="rnl-Vi-k2U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yht-D3-Tor">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVL-LX-7nt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="-81"/>
+        </scene>
+        <!--Feed WebsiteVC-->
         <scene sceneID="nLq-Ym-Rh9">
             <objects>
-                <viewController id="UDi-wx-Dc4" customClass="FeedContentVC" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedWebsiteVC" id="UDi-wx-Dc4" customClass="FeedWebsiteVC" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="etr-VC-YMe"/>
                         <viewControllerLayoutGuide type="bottom" id="qZA-xq-zi4"/>
@@ -61,7 +111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edi-cK-lYu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -69,7 +119,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="edi-cK-lYu" secondAttribute="trailing" id="1a8-IJ-W5R"/>
                             <constraint firstItem="edi-cK-lYu" firstAttribute="leading" secondItem="DVg-39-QMv" secondAttribute="leading" id="SCf-wN-3OW"/>
-                            <constraint firstItem="edi-cK-lYu" firstAttribute="top" secondItem="DVg-39-QMv" secondAttribute="top" id="ui4-aT-EXg"/>
+                            <constraint firstItem="edi-cK-lYu" firstAttribute="top" secondItem="DVg-39-QMv" secondAttribute="top" constant="64" id="ui4-aT-EXg"/>
                             <constraint firstItem="qZA-xq-zi4" firstAttribute="top" secondItem="edi-cK-lYu" secondAttribute="bottom" id="zrl-7C-cuR"/>
                         </constraints>
                     </view>
@@ -79,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmc-G3-hJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-80.50974512743629"/>
+            <point key="canvasLocation" x="3543" y="-81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Uu-UG-O0W">
