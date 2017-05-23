@@ -30,7 +30,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
     let rssURL = URL(string: "https://www.zhihu.com/rss")
     parser = MWFeedParser(feedURL: rssURL)
     parser?.delegate = self
-//    parser?.feedParseType = ParseTypeFull
+    parser?.feedParseType = ParseTypeFull
     parser?.connectionType = ConnectionTypeAsynchronously
     
   }
@@ -44,17 +44,24 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
     parser?.parse()
   }
   
-  /*
    // MARK: - Navigation
    
    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
+     if segue.identifier == "ShowContent" {
+       let dest = segue.destination as! FeedContentVC
+       dest.feedItem = sender as! MWFeedItem
+     }
    }
-   */
   
-// MARK: - MWFeedParserDelegate
+  // MARK: - UITableViewDelegate
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let item = self.dataSource.item(at: indexPath)
+    self.performSegue(withIdentifier: "ShowContent", sender: item)
+  }
+  
+  // MARK: - MWFeedParserDelegate
   
   func feedParserDidStart(_ parser: MWFeedParser!) {
     
@@ -67,6 +74,13 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
   
   func feedParser(_ parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
     print(item)
+    print(item.identifier)
+    print(item.updated)
+    print(item.summary)
+    print(item.content)
+    print(item.author)
+    print(item.enclosures)
+    print();
     self.feedItems.append(item)
   }
   
