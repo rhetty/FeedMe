@@ -13,6 +13,7 @@
 		C525A9DF1ED412E4000E0249 /* FeedContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525A9DE1ED412E4000E0249 /* FeedContentVC.swift */; };
 		C525A9E11ED41A24000E0249 /* FeedWebsiteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525A9E01ED41A24000E0249 /* FeedWebsiteVC.swift */; };
 		C525A9E31ED41AD8000E0249 /* FeedSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525A9E21ED41AD8000E0249 /* FeedSummaryVC.swift */; };
+		C57AD80F1EDD382900C0A86F /* MWFeedItem+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57AD80E1EDD382900C0A86F /* MWFeedItem+HTML.swift */; };
 		C59951C91EC34E8500747C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951C81EC34E8500747C81 /* AppDelegate.swift */; };
 		C59951CE1EC34E8500747C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59951CC1EC34E8500747C81 /* Main.storyboard */; };
 		C59951D11EC34E8500747C81 /* FeedMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C59951CF1EC34E8500747C81 /* FeedMe.xcdatamodeld */; };
@@ -54,6 +55,7 @@
 		C525A9DE1ED412E4000E0249 /* FeedContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedContentVC.swift; path = Controller/FeedContentVC.swift; sourceTree = "<group>"; };
 		C525A9E01ED41A24000E0249 /* FeedWebsiteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedWebsiteVC.swift; path = Controller/FeedWebsiteVC.swift; sourceTree = "<group>"; };
 		C525A9E21ED41AD8000E0249 /* FeedSummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedSummaryVC.swift; path = Controller/FeedSummaryVC.swift; sourceTree = "<group>"; };
+		C57AD80E1EDD382900C0A86F /* MWFeedItem+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MWFeedItem+HTML.swift"; path = "Utils/MWFeedItem+HTML.swift"; sourceTree = "<group>"; };
 		C59951C51EC34E8500747C81 /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59951C81EC34E8500747C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C59951CD1EC34E8500747C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C506362A1ED5C707000A3848 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C57AD80E1EDD382900C0A86F /* MWFeedItem+HTML.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		C59951BC1EC34E8500747C81 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		C59951C71EC34E8500747C81 /* FeedMe */ = {
 			isa = PBXGroup;
 			children = (
+				C506362A1ED5C707000A3848 /* Utils */,
 				C59951FD1EC4455600747C81 /* Controller */,
 				C59951FA1EC353A700747C81 /* Model */,
 				C59951F91EC3503B00747C81 /* Base */,
@@ -510,6 +521,7 @@
 				C525A9E11ED41A24000E0249 /* FeedWebsiteVC.swift in Sources */,
 				C525A9DF1ED412E4000E0249 /* FeedContentVC.swift in Sources */,
 				C59951D11EC34E8500747C81 /* FeedMe.xcdatamodeld in Sources */,
+				C57AD80F1EDD382900C0A86F /* MWFeedItem+HTML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,13 +74,14 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
   
   func feedParser(_ parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
     print(item)
-    print(item.identifier)
-    print(item.updated)
+    
+//    print(item.identifier)
+//    print(item.updated)
     print(item.summary)
-    print(item.content)
-    print(item.author)
-    print(item.enclosures)
-    print();
+//    print(item.content)
+//    print(item.author)
+//    print(item.enclosures)
+//    print();
     self.feedItems.append(item)
   }
   
@@ -91,6 +92,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate {
   }
   
   func feedParser(_ parser: MWFeedParser!, didFailWithError error: Error!) {
+    self.refreshControl?.endRefreshing()
     print(error)
   }
   

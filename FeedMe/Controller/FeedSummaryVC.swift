@@ -9,13 +9,17 @@
 import UIKit
 import MWFeedParser
 
-class FeedSummaryVC: BaseViewController {
+class FeedSummaryVC: BaseViewController, UIWebViewDelegate {
   var feedItem: MWFeedItem!
 
+  @IBOutlet weak var contentWebView: UIWebView!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      self.contentWebView.backgroundColor = UIColor.white
+    
+      self.contentWebView.loadHTMLString(self.feedItem.article, baseURL: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,4 +38,16 @@ class FeedSummaryVC: BaseViewController {
     }
     */
 
+  // MARK: - UIWebViewDelegate
+  
+  func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    if navigationType == UIWebViewNavigationType.linkClicked {
+      if UIApplication.shared.canOpenURL(request.url!) {
+        UIApplication.shared.open(request.url!, options: [:], completionHandler: nil)
+      }
+      return false
+    } else {
+      return true
+    }
+  }
 }

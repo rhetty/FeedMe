@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vYa-Es-IqH" id="lbb-SS-OQA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -91,12 +91,31 @@
                     <view key="view" contentMode="scaleToFill" id="yht-D3-Tor">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6z-tD-46K">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431372549019" green="0.38823529411764707" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ohN-Vx-TXc" id="xfK-Kv-lwC"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rnl-Vi-k2U" firstAttribute="top" secondItem="D6z-tD-46K" secondAttribute="bottom" id="6ZQ-G8-Qkf"/>
+                            <constraint firstItem="D6z-tD-46K" firstAttribute="leading" secondItem="yht-D3-Tor" secondAttribute="leading" id="Hoz-A7-ni6"/>
+                            <constraint firstAttribute="trailing" secondItem="D6z-tD-46K" secondAttribute="trailing" id="aJv-GK-2XJ"/>
+                            <constraint firstItem="D6z-tD-46K" firstAttribute="top" secondItem="yht-D3-Tor" secondAttribute="top" id="qbd-Ln-ION"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentWebView" destination="D6z-tD-46K" id="bho-cU-TaM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVL-LX-7nt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2750" y="-81"/>
+            <point key="canvasLocation" x="2749.5999999999999" y="-81.409295352323838"/>
         </scene>
         <!--Feed WebsiteVC-->
         <scene sceneID="nLq-Ym-Rh9">
@@ -113,6 +132,7 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edi-cK-lYu">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

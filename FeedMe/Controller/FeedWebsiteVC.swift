@@ -16,6 +16,8 @@ class FeedWebsiteVC: BaseViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      self.contentWebView.backgroundColor = UIColor.white
 
       if let urlStr = self.feedItem.identifier {
         self.contentWebView.loadRequest(URLRequest(url: URL(string: urlStr)!))

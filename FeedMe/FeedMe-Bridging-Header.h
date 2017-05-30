@@ -3,3 +3,4 @@
 //
 
 #import <MWFeedParser/MWFeedParser.h>
+#import "MWFeedParser/NSString+HTML.h"

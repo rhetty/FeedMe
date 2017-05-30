@@ -42,7 +42,7 @@ class FeedContentVC: BaseViewController {
   
   func transition(toIndex index: Int) {
     let dest = self.controller(atIndex: index)
-    self.transition(from: self.currentController, to: dest, duration: 1, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil) { (finished) in
+    self.transition(from: self.currentController, to: dest, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil) { (finished) in
         if finished {
           self.currentController = dest
         }
