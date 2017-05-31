@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.4.0)
+  - Kingfisher (3.5.1)
   - MWFeedParser (1.0.1):
     - MWFeedParser/FeedParser (= 1.0.1)
     - MWFeedParser/NSDate+InternetDateTime (= 1.0.1)
@@ -12,12 +13,14 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4.0)
+  - Kingfisher (~> 3.5.1)
   - MWFeedParser (~> 1.0.1)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Kingfisher: 12eeffeef42ea45b68c5e5acfe8ba9005b713ab4
   MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
 
-PODFILE CHECKSUM: 1520960dbd113dae5f9a1e5863c9fc8408dd99e1
+PODFILE CHECKSUM: e527079e99ecee90c68aedf19e585c8ad77a7446
 
 COCOAPODS: 1.2.0.beta.1

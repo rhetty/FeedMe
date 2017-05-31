@@ -9,7 +9,7 @@
 import UIKit
 import MWFeedParser
 
-class FeedSummaryVC: BaseViewController, UIWebViewDelegate {
+class FeedSummaryVC: BaseViewController {
   var feedItem: MWFeedItem!
 
   @IBOutlet weak var contentWebView: UIWebView!
@@ -18,7 +18,6 @@ class FeedSummaryVC: BaseViewController, UIWebViewDelegate {
         super.viewDidLoad()
 
       self.contentWebView.backgroundColor = UIColor.white
-    
       self.contentWebView.loadHTMLString(self.feedItem.article, baseURL: nil)
     }
 
@@ -37,17 +36,4 @@ class FeedSummaryVC: BaseViewController, UIWebViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
-  // MARK: - UIWebViewDelegate
-  
-  func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-    if navigationType == UIWebViewNavigationType.linkClicked {
-      if UIApplication.shared.canOpenURL(request.url!) {
-        UIApplication.shared.open(request.url!, options: [:], completionHandler: nil)
-      }
-      return false
-    } else {
-      return true
-    }
-  }
 }

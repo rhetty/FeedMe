@@ -18,7 +18,7 @@ class FeedWebsiteVC: BaseViewController {
         super.viewDidLoad()
       
       self.contentWebView.backgroundColor = UIColor.white
-
+      
       if let urlStr = self.feedItem.identifier {
         self.contentWebView.loadRequest(URLRequest(url: URL(string: urlStr)!))
       }
@@ -39,5 +39,4 @@ class FeedWebsiteVC: BaseViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
