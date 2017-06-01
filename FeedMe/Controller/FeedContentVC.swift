@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import MWFeedParser
 
 class FeedContentVC: BaseViewController {
-  var feedItem: MWFeedItem!
+  var feedItem: FeedItem!
   var vcDict: Dictionary<Int, UIViewController> = Dictionary()
   var currentController: UIViewController!
   

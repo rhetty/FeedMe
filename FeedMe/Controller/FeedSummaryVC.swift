@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import MWFeedParser
 
 class FeedSummaryVC: BaseViewController {
-  var feedItem: MWFeedItem!
+  var feedItem: FeedItem!
 
   @IBOutlet weak var contentWebView: UIWebView!
   

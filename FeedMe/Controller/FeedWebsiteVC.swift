@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import MWFeedParser
 
 class FeedWebsiteVC: BaseViewController {
   @IBOutlet weak var contentWebView: UIWebView!
   
-  var feedItem: MWFeedItem!
+  var feedItem: FeedItem!
   
     override func viewDidLoad() {
         super.viewDidLoad()
