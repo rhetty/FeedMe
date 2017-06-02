@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JRf-I4-yem">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o6P-E9-P2A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -148,10 +149,84 @@
             </objects>
             <point key="canvasLocation" x="3543" y="-81"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="kcp-jy-c7R">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="qRr-Gn-Csp" customClass="MenuViewController" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Zn-jp-rya"/>
+                        <viewControllerLayoutGuide type="bottom" id="8E2-V1-fUa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x8H-SN-pqh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfz-eD-FjK">
+                                <rect key="frame" x="32" y="290.5" width="49" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Feed">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuSelected:" destination="qRr-Gn-Csp" eventType="touchUpInside" id="ef3-bh-4ZV"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQF-GC-dFV">
+                                <rect key="frame" x="16" y="333.5" width="343" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="8ej-Xw-9Kl"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usw-eT-UgZ">
+                                <rect key="frame" x="32" y="337" width="124" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Subscription">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuSelected:" destination="qRr-Gn-Csp" eventType="touchUpInside" id="aHb-PF-RLN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="WQF-GC-dFV" secondAttribute="trailing" id="3uz-92-VHy"/>
+                            <constraint firstItem="WQF-GC-dFV" firstAttribute="leading" secondItem="x8H-SN-pqh" secondAttribute="leadingMargin" id="ECA-ZM-ei1"/>
+                            <constraint firstItem="usw-eT-UgZ" firstAttribute="top" secondItem="WQF-GC-dFV" secondAttribute="bottom" constant="4" id="TMx-L5-lgw"/>
+                            <constraint firstItem="usw-eT-UgZ" firstAttribute="leading" secondItem="x8H-SN-pqh" secondAttribute="leadingMargin" constant="16" id="fTE-WZ-iq5"/>
+                            <constraint firstItem="WQF-GC-dFV" firstAttribute="top" secondItem="rfz-eD-FjK" secondAttribute="bottom" constant="4" id="h9h-NC-Mg2"/>
+                            <constraint firstItem="rfz-eD-FjK" firstAttribute="leading" secondItem="x8H-SN-pqh" secondAttribute="leadingMargin" constant="16" id="lr1-UG-Cmb"/>
+                            <constraint firstItem="WQF-GC-dFV" firstAttribute="centerY" secondItem="x8H-SN-pqh" secondAttribute="centerY" id="w8F-S2-Jna"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrA-Cl-MZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125.5" y="-808.5"/>
+        </scene>
+        <!--Side Menu Controller-->
+        <scene sceneID="ZFF-hf-Grf">
+            <objects>
+                <viewController id="o6P-E9-P2A" customClass="FMSideMenuController" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JiD-r1-YkX"/>
+                        <viewControllerLayoutGuide type="bottom" id="RSk-Dz-dDq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jb8-ax-Q7D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1v4-uJ-Xbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-683" y="-423"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Uu-UG-O0W">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JRf-I4-yem" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Content" automaticallyAdjustsScrollViewInsets="NO" id="JRf-I4-yem" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LB5-eK-gmc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -165,6 +240,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hdh-x2-tuI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="125.59999999999999" y="-79.610194902548727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iXb-TZ-whB">
+            <objects>
+                <navigationController storyboardIdentifier="Subscription" automaticallyAdjustsScrollViewInsets="NO" id="OnL-Jx-B4r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uza-MX-Zgr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YWE-Va-efF" kind="relationship" relationship="rootViewController" id="vag-Sc-Zht"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ghj-c0-f4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="126" y="643"/>
+        </scene>
+        <!--Subscription-->
+        <scene sceneID="xrx-YM-BZO">
+            <objects>
+                <tableViewController id="YWE-Va-efF" customClass="SubscriptionTVC" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vBq-00-2Id">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubscriptionCell" id="tlj-eK-dA5">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tlj-eK-dA5" id="Dmr-OP-dGy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YWE-Va-efF" id="4Bs-74-JS7"/>
+                            <outlet property="delegate" destination="YWE-Va-efF" id="Xm4-1a-ie2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Subscription" id="VB2-TL-IvQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QEl-sx-SV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="643"/>
         </scene>
     </scenes>
 </document>

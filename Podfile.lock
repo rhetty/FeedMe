@@ -10,17 +10,20 @@ PODS:
     - MWFeedParser/NSString+HTML
   - MWFeedParser/NSDate+InternetDateTime (1.0.1)
   - MWFeedParser/NSString+HTML (1.0.1)
+  - RESideMenu (4.0.7)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4.0)
   - Kingfisher (~> 3.5.1)
   - MWFeedParser (~> 1.0.1)
+  - RESideMenu (~> 4.0.7)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Kingfisher: 12eeffeef42ea45b68c5e5acfe8ba9005b713ab4
   MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
+  RESideMenu: f24c508404b49c667344c54aba7e590883533958
 
-PODFILE CHECKSUM: e527079e99ecee90c68aedf19e585c8ad77a7446
+PODFILE CHECKSUM: 35e3d21f870fc15c754558112744edc5ed5cc491
 
 COCOAPODS: 1.2.0.beta.1

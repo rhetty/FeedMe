@@ -16,6 +16,9 @@
 		C54483E21EE00C8A00BABE0B /* FeedInfo+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483E11EE00C8A00BABE0B /* FeedInfo+Util.swift */; };
 		C54483E61EE031BD00BABE0B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483E51EE031BD00BABE0B /* CoreDataManager.swift */; };
 		C54483E81EE0493500BABE0B /* FeedItem+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483E71EE0493500BABE0B /* FeedItem+Util.swift */; };
+		C54483EA1EE1472A00BABE0B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483E91EE1472A00BABE0B /* MenuViewController.swift */; };
+		C54483EE1EE14CD000BABE0B /* FMSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483ED1EE14CD000BABE0B /* FMSideMenuController.swift */; };
+		C54483F01EE1578400BABE0B /* SubscriptionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483EF1EE1578400BABE0B /* SubscriptionTVC.swift */; };
 		C54613371EDEB82C009D287F /* FeedWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54613361EDEB82C009D287F /* FeedWebView.swift */; };
 		C59951C91EC34E8500747C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951C81EC34E8500747C81 /* AppDelegate.swift */; };
 		C59951CE1EC34E8500747C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59951CC1EC34E8500747C81 /* Main.storyboard */; };
@@ -60,6 +63,9 @@
 		C54483E11EE00C8A00BABE0B /* FeedInfo+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FeedInfo+Util.swift"; path = "CoreData/FeedInfo+Util.swift"; sourceTree = "<group>"; };
 		C54483E51EE031BD00BABE0B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = CoreData/CoreDataManager.swift; sourceTree = "<group>"; };
 		C54483E71EE0493500BABE0B /* FeedItem+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FeedItem+Util.swift"; path = "CoreData/FeedItem+Util.swift"; sourceTree = "<group>"; };
+		C54483E91EE1472A00BABE0B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controller/MenuViewController.swift; sourceTree = "<group>"; };
+		C54483ED1EE14CD000BABE0B /* FMSideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FMSideMenuController.swift; path = Controller/FMSideMenuController.swift; sourceTree = "<group>"; };
+		C54483EF1EE1578400BABE0B /* SubscriptionTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionTVC.swift; path = Controller/SubscriptionTVC.swift; sourceTree = "<group>"; };
 		C54613361EDEB82C009D287F /* FeedWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedWebView.swift; path = View/FeedWebView.swift; sourceTree = "<group>"; };
 		C59951C51EC34E8500747C81 /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59951C81EC34E8500747C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +237,9 @@
 				C525A9E01ED41A24000E0249 /* FeedWebsiteVC.swift */,
 				C59952021EC445E000747C81 /* BaseViewController.swift */,
 				C59952091EC8AECE00747C81 /* BaseTableViewController.swift */,
+				C54483E91EE1472A00BABE0B /* MenuViewController.swift */,
+				C54483ED1EE14CD000BABE0B /* FMSideMenuController.swift */,
+				C54483EF1EE1578400BABE0B /* SubscriptionTVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -535,7 +544,10 @@
 			files = (
 				C599520A1EC8AECE00747C81 /* BaseTableViewController.swift in Sources */,
 				C59952031EC445E000747C81 /* BaseViewController.swift in Sources */,
+				C54483F01EE1578400BABE0B /* SubscriptionTVC.swift in Sources */,
+				C54483EE1EE14CD000BABE0B /* FMSideMenuController.swift in Sources */,
 				C59952011EC445C700747C81 /* FeedsViewController.swift in Sources */,
+				C54483EA1EE1472A00BABE0B /* MenuViewController.swift in Sources */,
 				C599520C1EC8AF1D00747C81 /* ArrayDataSource.swift in Sources */,
 				C525A9E31ED41AD8000E0249 /* FeedSummaryVC.swift in Sources */,
 				C59951C91EC34E8500747C81 /* AppDelegate.swift in Sources */,
