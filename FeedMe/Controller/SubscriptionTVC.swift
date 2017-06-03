@@ -11,12 +11,14 @@ import CoreData
 
 class SubscriptionTVC: BaseTableViewController {
   
-  private var fetchResultController: NSFetchedResultsController<NSFetchRequestResult>!
+  private var fetchResultController: NSFetchedResultsController<FeedInfo>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        self.fetchResultController = FeedInfo.fetchedResultsController
+        self.fetchResultController = FeedInfo.fetchedAllController
+      
+      self.tableView.tableFooterView = UIView()
     }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +48,10 @@ class SubscriptionTVC: BaseTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell", for: indexPath)
-        let info = self.fetchResultController.object(at: indexPath) as! FeedInfo
-        cell.textLabel?.text = info.title
-
-        return cell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell", for: indexPath) as! SubscriptionTableViewCell
+      let info = self.fetchResultController.object(at: indexPath) 
+      cell.feedInfo = info
+      return cell
     }
 
     // Override to support conditional editing of the table view.
@@ -63,7 +64,7 @@ class SubscriptionTVC: BaseTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
           // Delete the row from the data source
-          let info = self.fetchResultController.object(at: indexPath) as! FeedInfo
+          let info = self.fetchResultController.object(at: indexPath) 
           info.delete()
           do {
             try self.fetchResultController.performFetch()

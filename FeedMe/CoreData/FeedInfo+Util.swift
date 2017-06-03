@@ -14,7 +14,7 @@ extension FeedInfo {
   
   var fetchedItemsController: NSFetchedResultsController<FeedItem> {
     let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
-    let sort = NSSortDescriptor(key: "created", ascending: false)
+    let sort = NSSortDescriptor(key: "date", ascending: false)
     request.sortDescriptors = [sort]
     request.fetchBatchSize = 20
     
@@ -24,8 +24,8 @@ extension FeedInfo {
     return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
   }
   
-  static var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> {
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedInfo")
+  static var fetchedAllController: NSFetchedResultsController<FeedInfo> {
+    let request = NSFetchRequest<FeedInfo>(entityName: "FeedInfo")
     let sort = NSSortDescriptor(key: "created", ascending: false)
     request.sortDescriptors = [sort]
     request.fetchBatchSize = 20
@@ -33,14 +33,26 @@ extension FeedInfo {
     return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
   }
   
+  static var fetchedEnableController: NSFetchedResultsController<FeedInfo> {
+    let request = NSFetchRequest<FeedInfo>(entityName: "FeedInfo")
+    let sort = NSSortDescriptor(key: "created", ascending: false)
+    request.sortDescriptors = [sort]
+    request.fetchBatchSize = 20
+    
+    let predicate = NSPredicate(format: "enable = true")
+    request.predicate = predicate
+    
+    return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+  }
+  
   class func fetch(url: String) -> FeedInfo? {
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedInfo")
+    let request = NSFetchRequest<FeedInfo>(entityName: "FeedInfo")
     
     let predicate = NSPredicate(format: "url = %@", url)
     request.predicate = predicate
     
     do {
-      let result = try CoreDataManager.context.fetch(request) as! [FeedInfo]
+      let result = try CoreDataManager.context.fetch(request)
       return result.first
     } catch {
       print(error)
@@ -55,6 +67,7 @@ extension FeedInfo {
     feedInfo.url = info.url.absoluteString
     feedInfo.summary = info.summary
     feedInfo.created = NSDate()
+    feedInfo.enable = true
     CoreDataManager.app.saveContext()
     return feedInfo
   }
@@ -81,7 +94,7 @@ extension FeedInfo {
   }
   
   func fetch(offset: Int, count: Int) -> [FeedItem] {
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedItem")
+    let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
     request.fetchLimit = count
     request.fetchOffset = offset
     
@@ -92,7 +105,7 @@ extension FeedInfo {
     request.sortDescriptors = [sort]
     
     do {
-      let result = try CoreDataManager.context.fetch(request) as! [FeedItem]
+      let result = try CoreDataManager.context.fetch(request)
       return result
     } catch {
       print(error)
@@ -103,5 +116,14 @@ extension FeedInfo {
   func delete() {
     CoreDataManager.context.delete(self)
     CoreDataManager.app.saveContext()
+  }
+  
+  func enable(_ enable: Bool) {
+    self.enable = enable
+    do {
+      try CoreDataManager.context.save()
+    } catch {
+      print(error)
+    }
   }
 }

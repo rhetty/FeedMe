@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FeedInfo" representedClassName="FeedInfo" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="enable" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,7 +22,7 @@
         <relationship name="feedInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FeedInfo" inverseName="items" inverseEntity="FeedInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FeedInfo" positionX="-324" positionY="36" width="128" height="133"/>
+        <element name="FeedInfo" positionX="-324" positionY="36" width="128" height="150"/>
         <element name="FeedItem" positionX="-54" positionY="9" width="128" height="193"/>
     </elements>
 </model>

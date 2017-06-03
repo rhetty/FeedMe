@@ -12,12 +12,11 @@ import CoreData
 
 class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComboBoxDataSource, JWComboBoxDelegate {
   private var dataSource: ArrayDataSource! = nil
-//  private var feedItems: [FeedItem] = []
   private var parser: MWFeedParser!
   private var selectedInfo: FeedInfo?
   private var lastItemDate: NSDate?
   private var parsingInfo: FeedInfo?
-  private var subscriptionFetch: NSFetchedResultsController<NSFetchRequestResult>!
+  private var subscriptionFetch: NSFetchedResultsController<FeedInfo>!
   private var subscriptionComboBox: JWComboBox = JWComboBox(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
   
   // MARK: - Lifecycle
@@ -30,10 +29,10 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
       cell.textLabel?.text = (item as! FeedItem).title
     })
     self.tableView.dataSource = self.dataSource
-    self.tableView.delegate = self
+    self.tableView.tableFooterView = UIView()
 
     // fetched results controller
-    self.subscriptionFetch = FeedInfo.fetchedResultsController
+    self.subscriptionFetch = FeedInfo.fetchedEnableController
     
     // subscription combobox
     self.navigationItem.titleView = self.subscriptionComboBox
@@ -69,7 +68,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
       self.parser.parse()
     } else {
       DispatchQueue.global().async {
-        for subscription in self.subscriptionFetch.fetchedObjects! as! [FeedInfo] {
+        for subscription in self.subscriptionFetch.fetchedObjects! {
           self.parser = MWFeedParser(feedURL: URL(string: (subscription.url)!))
           self.parser.connectionType = ConnectionTypeSynchronously
           self.parser.feedParseType = ParseTypeFull
@@ -164,7 +163,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
     if index == 0 {
       return NSLocalizedString("All", comment: "")
     } else {
-      let info = self.subscriptionFetch.object(at: IndexPath(row: Int(index - 1), section: 0)) as! FeedInfo
+      let info = self.subscriptionFetch.object(at: IndexPath(row: Int(index - 1), section: 0)) 
       return info.title!
     }
   }
@@ -175,7 +174,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
     if index == 0 {
       self.selectedInfo = nil
     } else {
-      self.selectedInfo = (self.subscriptionFetch.object(at: IndexPath(row: Int(index - 1), section: 0)) as! FeedInfo)
+      self.selectedInfo = (self.subscriptionFetch.object(at: IndexPath(row: Int(index - 1), section: 0)) )
     }
     self.displayFeeds()
   }

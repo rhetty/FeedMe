@@ -19,6 +19,8 @@ class AddSubscriptionVC: BaseTableViewController, MWFeedParserDelegate {
   
     override func viewDidLoad() {
       super.viewDidLoad()
+      
+      self.addressTextField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +35,7 @@ class AddSubscriptionVC: BaseTableViewController, MWFeedParserDelegate {
   }
   
   @IBAction func cancel(_ sender: UIBarButtonItem) {
+    self.view.endEditing(true)
     self.dismiss(animated: true, completion: nil)
   }
   

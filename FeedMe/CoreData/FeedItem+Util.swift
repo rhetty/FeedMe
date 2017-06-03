@@ -12,9 +12,9 @@ import MWFeedParser
 
 extension FeedItem {
   
-  var fetchedItemsController: NSFetchedResultsController<FeedItem> {
+  var fetchedAllController: NSFetchedResultsController<FeedItem> {
     let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
-    let sort = NSSortDescriptor(key: "created", ascending: false)
+    let sort = NSSortDescriptor(key: "date", ascending: false)
     request.sortDescriptors = [sort]
     request.fetchBatchSize = 20
     
@@ -22,7 +22,7 @@ extension FeedItem {
   }
   
   class func fetch(offset: Int, count: Int) -> [FeedItem] {
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedItem")
+    let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
     request.fetchLimit = count
     request.fetchOffset = offset
     
@@ -30,7 +30,7 @@ extension FeedItem {
     request.sortDescriptors = [sort]
     
     do {
-      let result = try CoreDataManager.context.fetch(request) as! [FeedItem]
+      let result = try CoreDataManager.context.fetch(request)
       return result
     } catch {
       print(error)

@@ -22,6 +22,7 @@
 		C54483F21EE283CA00BABE0B /* AddSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483F11EE283CA00BABE0B /* AddSubscriptionVC.swift */; };
 		C54483F41EE2925D00BABE0B /* UIView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483F31EE2925D00BABE0B /* UIView+Toast.swift */; };
 		C54483F81EE29FFE00BABE0B /* JWComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C54483F71EE29FFE00BABE0B /* JWComboBox.m */; };
+		C54483FA1EE2DAD100BABE0B /* SubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483F91EE2DAD100BABE0B /* SubscriptionTableViewCell.swift */; };
 		C54613371EDEB82C009D287F /* FeedWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54613361EDEB82C009D287F /* FeedWebView.swift */; };
 		C59951C91EC34E8500747C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951C81EC34E8500747C81 /* AppDelegate.swift */; };
 		C59951CE1EC34E8500747C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59951CC1EC34E8500747C81 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		C54483F31EE2925D00BABE0B /* UIView+Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Toast.swift"; path = "Utils/UIView+Toast.swift"; sourceTree = "<group>"; };
 		C54483F61EE29FFE00BABE0B /* JWComboBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWComboBox.h; sourceTree = "<group>"; };
 		C54483F71EE29FFE00BABE0B /* JWComboBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWComboBox.m; sourceTree = "<group>"; };
+		C54483F91EE2DAD100BABE0B /* SubscriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionTableViewCell.swift; path = View/SubscriptionTableViewCell.swift; sourceTree = "<group>"; };
 		C54613361EDEB82C009D287F /* FeedWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedWebView.swift; path = View/FeedWebView.swift; sourceTree = "<group>"; };
 		C59951C51EC34E8500747C81 /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59951C81EC34E8500747C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				C54613361EDEB82C009D287F /* FeedWebView.swift */,
+				C54483F91EE2DAD100BABE0B /* SubscriptionTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				C525A9E11ED41A24000E0249 /* FeedWebsiteVC.swift in Sources */,
 				C525A9DF1ED412E4000E0249 /* FeedContentVC.swift in Sources */,
 				C59951D11EC34E8500747C81 /* FeedMe.xcdatamodeld in Sources */,
+				C54483FA1EE2DAD100BABE0B /* SubscriptionTableViewCell.swift in Sources */,
 				C54483E21EE00C8A00BABE0B /* FeedInfo+Util.swift in Sources */,
 				C54483F21EE283CA00BABE0B /* AddSubscriptionVC.swift in Sources */,
 				C54613371EDEB82C009D287F /* FeedWebView.swift in Sources */,
