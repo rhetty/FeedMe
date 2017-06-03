@@ -11,6 +11,7 @@ target 'FeedMe' do
   pod 'MWFeedParser', '~> 1.0.1'
   pod 'Kingfisher', '~> 3.5.1'
   pod 'RESideMenu', '~> 4.0.7'
+  pod 'Toast-Swift', '~> 2.0.0'
 
   target 'FeedMeTests' do
     inherit! :search_paths

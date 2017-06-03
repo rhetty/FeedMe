@@ -282,11 +282,97 @@
                             <outlet property="delegate" destination="YWE-Va-efF" id="Xm4-1a-ie2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Subscription" id="VB2-TL-IvQ"/>
+                    <navigationItem key="navigationItem" title="Subscription" id="VB2-TL-IvQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="J70-iQ-P8h">
+                            <connections>
+                                <segue destination="eRU-1v-T48" kind="presentation" id="bPy-rb-Gq4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEl-sx-SV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1065" y="643"/>
+        </scene>
+        <!--Add Subscription-->
+        <scene sceneID="f9P-hW-pXf">
+            <objects>
+                <tableViewController id="IRH-zQ-4jt" customClass="AddSubscriptionVC" customModule="FeedMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="4El-bo-krt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="" id="BbE-4j-dV3">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="bFQ-aX-QWt">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFQ-aX-QWt" id="sUn-ED-yG7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AL2-2o-iGZ">
+                                                    <rect key="frame" x="8" y="13.5" width="359" height="17"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="AL2-2o-iGZ" secondAttribute="trailing" constant="8" id="MgL-Xh-dbT"/>
+                                                <constraint firstItem="AL2-2o-iGZ" firstAttribute="leading" secondItem="sUn-ED-yG7" secondAttribute="leading" constant="8" id="bkL-xw-Mf7"/>
+                                                <constraint firstItem="AL2-2o-iGZ" firstAttribute="centerY" secondItem="sUn-ED-yG7" secondAttribute="centerY" id="npy-k4-UWB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IRH-zQ-4jt" id="zmV-Ob-YOu"/>
+                            <outlet property="delegate" destination="IRH-zQ-4jt" id="XJC-mn-cT1"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add Subscription" id="kiY-bc-IBC">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RCA-sD-jUJ">
+                            <connections>
+                                <action selector="cancel:" destination="IRH-zQ-4jt" id="rP6-KC-9iu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iqe-eb-liG">
+                            <connections>
+                                <action selector="done:" destination="IRH-zQ-4jt" id="itd-8L-3i1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="AL2-2o-iGZ" id="O1T-k0-jNx"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="okU-yn-kzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="643"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9NI-zi-Lpq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eRU-1v-T48" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D0h-lC-rLf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IRH-zQ-4jt" kind="relationship" relationship="rootViewController" id="Ykh-jM-C3k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfZ-wY-n4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="643"/>
         </scene>
     </scenes>
 </document>

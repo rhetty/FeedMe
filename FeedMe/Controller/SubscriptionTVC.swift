@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SubscriptionTVC: UITableViewController {
+class SubscriptionTVC: BaseTableViewController {
   
   private var fetchResultController: NSFetchedResultsController<NSFetchRequestResult>!
 
@@ -23,13 +23,20 @@ class SubscriptionTVC: UITableViewController {
       
       self.fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
       
-      do {
-        try self.fetchResultController.performFetch()
-      } catch {
-        print(error)
-      }
-    }
 
+    }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    do {
+      try self.fetchResultController.performFetch()
+    } catch {
+      print(error)
+    }
+    self.tableView.reloadData()
+  }
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,25 +60,26 @@ class SubscriptionTVC: UITableViewController {
         return cell
     }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+          // Delete the row from the data source
+          let info = self.fetchResultController.object(at: indexPath) as! FeedInfo
+          info.delete()
+          do {
+            try self.fetchResultController.performFetch()
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+          } catch {
+            print(error)
+          }
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
