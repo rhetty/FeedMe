@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ArrayDataSource: NSObject, UITableViewDataSource {
   var items: [AnyObject]?

@@ -19,8 +19,6 @@ class AddSubscriptionVC: BaseTableViewController, MWFeedParserDelegate {
   
     override func viewDidLoad() {
       super.viewDidLoad()
-      
-      self.addressTextField.text = "https://www.zhihu.com/rss"
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +38,7 @@ class AddSubscriptionVC: BaseTableViewController, MWFeedParserDelegate {
   
   func validate(_ address: String) {
     self.navigationController?.view.fm_showActivityIndicator()
-    
+
     self.parser = MWFeedParser(feedURL: URL(string: address))
     self.parser.delegate = self
     self.parser.connectionType = ConnectionTypeAsynchronously
@@ -71,6 +69,7 @@ class AddSubscriptionVC: BaseTableViewController, MWFeedParserDelegate {
     if let saved = FeedInfo.fetch(url: self.feedInfo.url.absoluteString) {
       self.navigationController?.view.fm_showToast("\(NSLocalizedString("Already subscribed", comment: "")) [\(saved.title!)]")
     } else {
+      self.view.endEditing(true)
       _ = FeedInfo.insert(self.feedInfo)
       self.navigationController?.view.fm_showToast("\(NSLocalizedString("Subscribe", comment: "")) [\(self.feedInfo.title!)] \(NSLocalizedString("successfully", comment: ""))", duration: 2.0, completion: {
         self.dismiss(animated: true, completion: nil)

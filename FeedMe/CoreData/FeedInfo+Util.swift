@@ -12,6 +12,27 @@ import MWFeedParser
 
 extension FeedInfo {
   
+  var fetchedItemsController: NSFetchedResultsController<FeedItem> {
+    let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
+    let sort = NSSortDescriptor(key: "created", ascending: false)
+    request.sortDescriptors = [sort]
+    request.fetchBatchSize = 20
+    
+    let predicate = NSPredicate(format: "feedInfo = %@", self)
+    request.predicate = predicate
+    
+    return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+  }
+  
+  static var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedInfo")
+    let sort = NSSortDescriptor(key: "created", ascending: false)
+    request.sortDescriptors = [sort]
+    request.fetchBatchSize = 20
+    
+    return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+  }
+  
   class func fetch(url: String) -> FeedInfo? {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedInfo")
     

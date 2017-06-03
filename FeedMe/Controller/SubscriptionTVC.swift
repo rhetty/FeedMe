@@ -16,14 +16,7 @@ class SubscriptionTVC: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedInfo")
-      let sort = NSSortDescriptor(key: "created", ascending: false)
-      request.sortDescriptors = [sort]
-      request.fetchBatchSize = 20
-      
-      self.fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
-      
-
+        self.fetchResultController = FeedInfo.fetchedResultsController
     }
   
   override func viewWillAppear(_ animated: Bool) {

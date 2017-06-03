@@ -21,6 +21,7 @@
 		C54483F01EE1578400BABE0B /* SubscriptionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483EF1EE1578400BABE0B /* SubscriptionTVC.swift */; };
 		C54483F21EE283CA00BABE0B /* AddSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483F11EE283CA00BABE0B /* AddSubscriptionVC.swift */; };
 		C54483F41EE2925D00BABE0B /* UIView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54483F31EE2925D00BABE0B /* UIView+Toast.swift */; };
+		C54483F81EE29FFE00BABE0B /* JWComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C54483F71EE29FFE00BABE0B /* JWComboBox.m */; };
 		C54613371EDEB82C009D287F /* FeedWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54613361EDEB82C009D287F /* FeedWebView.swift */; };
 		C59951C91EC34E8500747C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59951C81EC34E8500747C81 /* AppDelegate.swift */; };
 		C59951CE1EC34E8500747C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59951CC1EC34E8500747C81 /* Main.storyboard */; };
@@ -70,6 +71,8 @@
 		C54483EF1EE1578400BABE0B /* SubscriptionTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionTVC.swift; path = Controller/SubscriptionTVC.swift; sourceTree = "<group>"; };
 		C54483F11EE283CA00BABE0B /* AddSubscriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSubscriptionVC.swift; path = Controller/AddSubscriptionVC.swift; sourceTree = "<group>"; };
 		C54483F31EE2925D00BABE0B /* UIView+Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Toast.swift"; path = "Utils/UIView+Toast.swift"; sourceTree = "<group>"; };
+		C54483F61EE29FFE00BABE0B /* JWComboBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWComboBox.h; sourceTree = "<group>"; };
+		C54483F71EE29FFE00BABE0B /* JWComboBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWComboBox.m; sourceTree = "<group>"; };
 		C54613361EDEB82C009D287F /* FeedWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedWebView.swift; path = View/FeedWebView.swift; sourceTree = "<group>"; };
 		C59951C51EC34E8500747C81 /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59951C81EC34E8500747C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		C506362A1ED5C707000A3848 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C54483F51EE29FFE00BABE0B /* ComboBox */,
 				C54483F31EE2925D00BABE0B /* UIView+Toast.swift */,
 			);
 			name = Utils;
@@ -148,6 +152,16 @@
 				C54483E51EE031BD00BABE0B /* CoreDataManager.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		C54483F51EE29FFE00BABE0B /* ComboBox */ = {
+			isa = PBXGroup;
+			children = (
+				C54483F61EE29FFE00BABE0B /* JWComboBox.h */,
+				C54483F71EE29FFE00BABE0B /* JWComboBox.m */,
+			);
+			name = ComboBox;
+			path = Utils/ComboBox;
 			sourceTree = "<group>";
 		};
 		C54613351EDEB811009D287F /* View */ = {
@@ -550,6 +564,7 @@
 			files = (
 				C599520A1EC8AECE00747C81 /* BaseTableViewController.swift in Sources */,
 				C59952031EC445E000747C81 /* BaseViewController.swift in Sources */,
+				C54483F81EE29FFE00BABE0B /* JWComboBox.m in Sources */,
 				C54483F01EE1578400BABE0B /* SubscriptionTVC.swift in Sources */,
 				C54483EE1EE14CD000BABE0B /* FMSideMenuController.swift in Sources */,
 				C59952011EC445C700747C81 /* FeedsViewController.swift in Sources */,
