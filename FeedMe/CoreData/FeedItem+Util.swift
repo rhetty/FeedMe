@@ -41,12 +41,54 @@ extension FeedItem {
   static var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateStyle = DateFormatter.Style.full
-    formatter.timeStyle = DateFormatter.Style.none
+    formatter.timeStyle = DateFormatter.Style.short
     return formatter
   }
   
+  var monthWeekDay: String {
+    return FeedItem.dateFormatter.string(from: self.date! as Date)
+  }
+  
+  var timeIntervalString: String {
+    let timeInterval = Date().timeIntervalSince(self.date! as Date)
+    
+    let mins = Int(timeInterval) / 60
+    if mins <= 1 {
+      return NSLocalizedString("Just now", comment: "")
+    } else if mins < 60 {
+      return "\(mins) \(NSLocalizedString("minutes", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    }
+    
+    let hours = mins / 60
+    if hours == 1 {
+      return "\(hours) \(NSLocalizedString("hour", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    } else if hours < 24 {
+      return "\(hours) \(NSLocalizedString("hours", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    }
+    
+    let days = hours / 24
+    if days == 1 {
+      return "\(days) \(NSLocalizedString("day", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    } else if days < 30 {
+      return "\(days) \(NSLocalizedString("days", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    }
+    
+    let months = days / 30
+    if months == 1 {
+      return "\(months) \(NSLocalizedString("month", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    } else if months < 12 {
+      return "\(months) \(NSLocalizedString("months", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    }
+    
+    let years = months / 12
+    if years == 1 {
+      return "\(years) \(NSLocalizedString("year", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+    }
+    return "\(years) \(NSLocalizedString("years", comment: ""))\(NSLocalizedString(" ago", comment: ""))"
+  }
+  
   var article: String {
-    var arti = "<h2 style=\"text-align:center\">\(self.title ?? "")</h2><p style=\"font-size:small;color:#BBBBBB;text-align:center\"><span>\(FeedItem.dateFormatter.string(from: self.date! as Date))</span> via <span>\(self.author ?? (self.feedInfo?.title)!)</span></p>"
+    var arti = "<h2 style=\"text-align:center\">\(self.title ?? "")</h2><p style=\"font-size:small;color:#BBBBBB;text-align:center\"><span>\(self.monthWeekDay)</span> via <span>\(self.author ?? (self.feedInfo?.title)!)</span></p>"
     
     arti.append("<style>img{width:100% !important;}</style>")
     arti.append(self.summary!)

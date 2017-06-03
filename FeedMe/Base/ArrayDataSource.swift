@@ -9,20 +9,20 @@
 import UIKit
 import CoreData
 
-class ArrayDataSource: NSObject, UITableViewDataSource {
-  var items: [AnyObject]?
+class ArrayDataSource<Element: AnyObject>: NSObject, UITableViewDataSource {
+  var items: [Element]?
   
   private var cellIdentifier: String
-  private var configureCell: (UITableViewCell, AnyObject) -> Void
+  private var configureCell: (UITableViewCell, Element) -> Void
   
-  init(cellIdentifier: String, configureCell: @escaping (UITableViewCell, AnyObject) -> Void) {
+  init(cellIdentifier: String, configureCell: @escaping (UITableViewCell, Element) -> Void) {
     self.cellIdentifier = cellIdentifier
     self.configureCell = configureCell
     
     super.init()
   }
   
-  func item(at indexPath: IndexPath) -> AnyObject? {
+  func item(at indexPath: IndexPath) -> Element? {
     return items?[indexPath.row]
   }
   

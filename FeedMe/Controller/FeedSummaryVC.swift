@@ -17,7 +17,9 @@ class FeedSummaryVC: BaseViewController {
         super.viewDidLoad()
 
       self.contentWebView.backgroundColor = UIColor.white
-      self.contentWebView.loadHTMLString(self.feedItem.article, baseURL: nil)
+      DispatchQueue.global().async {
+        self.contentWebView.loadHTMLString(self.feedItem.article, baseURL: nil)
+      }
     }
 
     override func didReceiveMemoryWarning() {

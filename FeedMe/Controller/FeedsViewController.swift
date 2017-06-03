@@ -11,13 +11,16 @@ import MWFeedParser
 import CoreData
 
 class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComboBoxDataSource, JWComboBoxDelegate {
-  private var dataSource: ArrayDataSource! = nil
+  private var dataSource: ArrayDataSource<FeedItem>! = nil
   private var parser: MWFeedParser!
   private var selectedInfo: FeedInfo?
   private var lastItemDate: NSDate?
   private var parsingInfo: FeedInfo?
   private var subscriptionFetch: NSFetchedResultsController<FeedInfo>!
   private var subscriptionComboBox: JWComboBox = JWComboBox(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+  private var hasMore = true
+  
+  static let feedBatchSize = 20
   
   // MARK: - Lifecycle
   
@@ -26,7 +29,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
     
     // configure tableview
     self.dataSource = ArrayDataSource(cellIdentifier: "FeedCell", configureCell: { (cell, item) in
-      cell.textLabel?.text = (item as! FeedItem).title
+      (cell as! FeedTableViewCell).feedItem = item
     })
     self.tableView.dataSource = self.dataSource
     self.tableView.tableFooterView = UIView()
@@ -52,6 +55,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
       print(error)
     }
     self.subscriptionComboBox.reloadData()
+    self.tableView.reloadData()
   }
   
   override func didReceiveMemoryWarning() {
@@ -83,10 +87,27 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
   
   private func displayFeeds() {
     if self.selectedInfo == nil {
-      self.dataSource.items = FeedItem.fetch(offset: 0, count: 20)
+      self.dataSource.items = FeedItem.fetch(offset: 0, count: FeedsViewController.feedBatchSize)
     } else {
-      self.dataSource.items = self.selectedInfo!.fetch(offset: 0, count: 20)
+      self.dataSource.items = self.selectedInfo!.fetch(offset: 0, count: FeedsViewController.feedBatchSize)
     }
+    self.tableView.reloadData()
+    self.hasMore = true
+    self.tableView.setContentOffset(CGPoint.zero, animated: false)
+  }
+  
+  private func loadMoreFeeds() {
+    var newData: [FeedItem]!
+    
+    if self.selectedInfo == nil {
+      newData = FeedItem.fetch(offset: self.dataSource.items?.count ?? 0, count: FeedsViewController.feedBatchSize)
+    } else {
+      newData = self.selectedInfo!.fetch(offset: self.dataSource.items?.count ?? 0, count: FeedsViewController.feedBatchSize)
+    }
+    if newData.count < FeedsViewController.feedBatchSize {
+      hasMore = false
+    }
+    self.dataSource.items! += newData
     self.tableView.reloadData()
   }
   
@@ -177,6 +198,14 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
       self.selectedInfo = (self.subscriptionFetch.object(at: IndexPath(row: Int(index - 1), section: 0)) )
     }
     self.displayFeeds()
+  }
+  
+  // MARK: - UIScrollViewDelegate
+
+  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if hasMore && scrollView.contentOffset.y + 64 > scrollView.contentSize.height - UIScreen.main.bounds.height * 1.5  {
+      self.loadMoreFeeds()
+    }
   }
   
 }
