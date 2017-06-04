@@ -11,6 +11,8 @@ import MWFeedParser
 import CoreData
 
 class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComboBoxDataSource, JWComboBoxDelegate {
+  @IBOutlet weak var filterButtonItem: UIBarButtonItem!
+  
   private var dataSource: ArrayDataSource<FeedItem>! = nil
   private var parser: MWFeedParser!
   private var selectedInfo: FeedInfo?
@@ -20,7 +22,41 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
   private var subscriptionComboBox: JWComboBox = JWComboBox(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
   private var hasMore = true
   
-  static let feedBatchSize = 20
+  private static let feedBatchSize = 20
+  
+  private var filterType: FilterType = .All
+  lazy var filterSheet: UIAlertController = {
+    let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    
+    let allFilter = UIAlertAction(title: NSLocalizedString("All articles", comment: ""), style: .default) { (action) in
+      self.filterType = .All
+      self.filterButtonItem.image = UIImage(named: "archive")
+      self.displayFeeds()
+    }
+    
+    let unreadFilter = UIAlertAction(title: NSLocalizedString("Unread articles", comment: ""), style: .default, handler: { (action) in
+      self.filterType = .Unread
+      self.filterButtonItem.image = UIImage(named: "check")
+      self.displayFeeds()
+    })
+    
+    let starFilter = UIAlertAction(title: NSLocalizedString("Starred articles", comment: ""), style: .default, handler: { (action) in
+      self.filterType = .Starred
+      self.filterButtonItem.image = UIImage(named: "star")
+      self.displayFeeds()
+    })
+    
+    let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
+      sheet.dismiss(animated: true, completion: nil)
+    })
+    
+    sheet.addAction(allFilter)
+    sheet.addAction(unreadFilter)
+    sheet.addAction(starFilter)
+    sheet.addAction(cancel)
+    
+    return sheet
+  }()
   
   // MARK: - Lifecycle
   
@@ -42,7 +78,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
     self.subscriptionComboBox.dataSource = self
     self.subscriptionComboBox.delegate = self
     
-    
+
     self.displayFeeds()
   }
   
@@ -87,28 +123,32 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
   
   private func displayFeeds() {
     if self.selectedInfo == nil {
-      self.dataSource.items = FeedItem.fetch(offset: 0, count: FeedsViewController.feedBatchSize)
+      self.dataSource.items = FeedItem.fetch(offset: 0, count: FeedsViewController.feedBatchSize, filter: self.filterType)
     } else {
-      self.dataSource.items = self.selectedInfo!.fetch(offset: 0, count: FeedsViewController.feedBatchSize)
+      self.dataSource.items = self.selectedInfo!.fetch(offset: 0, count: FeedsViewController.feedBatchSize, filter: self.filterType)
     }
     self.tableView.reloadData()
     self.hasMore = true
-    self.tableView.setContentOffset(CGPoint.zero, animated: false)
+//    self.tableView.setContentOffset(CGPoint.zero, animated: false)
   }
   
   private func loadMoreFeeds() {
     var newData: [FeedItem]!
     
     if self.selectedInfo == nil {
-      newData = FeedItem.fetch(offset: self.dataSource.items?.count ?? 0, count: FeedsViewController.feedBatchSize)
+      newData = FeedItem.fetch(offset: self.dataSource.items?.count ?? 0, count: FeedsViewController.feedBatchSize, filter: self.filterType)
     } else {
-      newData = self.selectedInfo!.fetch(offset: self.dataSource.items?.count ?? 0, count: FeedsViewController.feedBatchSize)
+      newData = self.selectedInfo!.fetch(offset: self.dataSource.items?.count ?? 0, count: FeedsViewController.feedBatchSize, filter: self.filterType)
     }
     if newData.count < FeedsViewController.feedBatchSize {
       hasMore = false
     }
     self.dataSource.items! += newData
     self.tableView.reloadData()
+  }
+  
+  @IBAction func changeFilter(_ sender: UIBarButtonItem) {
+    self.present(self.filterSheet, animated: true, completion: nil)
   }
   
    // MARK: - Navigation
@@ -148,7 +188,7 @@ class FeedsViewController: BaseTableViewController, MWFeedParserDelegate, JWComb
   }
   
   func feedParser(_ parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
-    print(item.summary)
+    print(item)
     if self.lastItemDate == nil || item.date.compare(self.lastItemDate! as Date) == ComparisonResult.orderedDescending {
       _ = self.parsingInfo?.insert(item: item)
     } else {

@@ -89,16 +89,25 @@ extension FeedInfo {
   }
   
   func lastItem() -> FeedItem? {
-    let result = self.fetch(offset: 0, count: 1)
+    let result = self.fetch(offset: 0, count: 1, filter: .All)
     return result.first
   }
   
-  func fetch(offset: Int, count: Int) -> [FeedItem] {
+  func fetch(offset: Int, count: Int, filter: FilterType) -> [FeedItem] {
     let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
     request.fetchLimit = count
     request.fetchOffset = offset
     
-    let predicate = NSPredicate(format: "feedInfo = %@", self)
+    var predicate: NSPredicate!
+    
+    if filter == .Unread {
+      predicate = NSPredicate(format: "feedInfo = %@ AND read = false", self)
+    } else if filter == .Starred {
+      predicate = NSPredicate(format: "feedInfo = %@ AND starred = true", self)
+    } else {
+      predicate = NSPredicate(format: "feedInfo = %@", self)
+    }
+
     request.predicate = predicate
     
     let sort = NSSortDescriptor(key: "date", ascending: false)

@@ -10,6 +10,12 @@ import Foundation
 import CoreData
 import MWFeedParser
 
+enum FilterType: Int{
+  case All = 0
+  case Unread
+  case Starred
+}
+
 extension FeedItem {
   
   var fetchedAllController: NSFetchedResultsController<FeedItem> {
@@ -21,13 +27,18 @@ extension FeedItem {
     return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
   }
   
-  class func fetch(offset: Int, count: Int) -> [FeedItem] {
+  class func fetch(offset: Int, count: Int, filter: FilterType) -> [FeedItem] {
     let request = NSFetchRequest<FeedItem>(entityName: "FeedItem")
     request.fetchLimit = count
     request.fetchOffset = offset
     
     let sort = NSSortDescriptor(key: "date", ascending: false)
     request.sortDescriptors = [sort]
+    
+    if filter != .All {
+      let predicate = NSPredicate(format: filter == .Unread ? "read = false" : "starred = true")
+      request.predicate = predicate
+    }
     
     do {
       let result = try CoreDataManager.context.fetch(request)
@@ -94,5 +105,23 @@ extension FeedItem {
     arti.append(self.summary!)
     
     return arti
+  }
+  
+  func star(_ s: Bool) {
+    self.starred = s
+    do {
+      try CoreDataManager.context.save()
+    } catch {
+      print(error)
+    }
+  }
+  
+  func read(_ r: Bool) {
+    self.read = r
+    do {
+      try CoreDataManager.context.save()
+    } catch {
+      print(error)
+    }
   }
 }
